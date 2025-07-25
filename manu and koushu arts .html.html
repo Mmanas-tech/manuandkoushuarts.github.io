@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manu & Koushu Arts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #333;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1em 2em;
+      background-color: #b2ebf2;
+    }
+    header img {
+      height: 50px;
+    }
+    header nav a {
+      margin: 0 1em;
+      text-decoration: none;
+      color: #00796b;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .hero {
+      text-align: center;
+      padding: 4em 2em;
+    }
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+      color: #006064;
+    }
+    .hero p {
+      font-size: 1.2em;
+    }
+    .button {
+      display: inline-block;
+      margin-top: 1.5em;
+      padding: 0.75em 1.5em;
+      background-color: #00acc1;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    .button:hover {
+      background-color: #00838f;
+    }
+    .featured-video {
+      text-align: center;
+      padding: 3em 2em;
+    }
+    .featured-video iframe {
+      width: 90%;
+      max-width: 800px;
+      height: 450px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      display: block;
+      margin: 0 auto;
+    }
+    .gallery {
+      padding: 3em 2em;
+      background: #f1f8e9;
+    }
+    .gallery h2 {
+      text-align: center;
+      color: #33691e;
+      margin-bottom: 1em;
+    }
+    .thumbnail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5em;
+      padding: 0 2em;
+    }
+    .thumbnail {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .thumbnail:hover {
+      transform: scale(1.03);
+    }
+    .thumbnail img {
+      width: 100%;
+      height: auto;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      font-size: 0.9em;
+      background-color: #b2ebf2;
+    }
+    #contactModal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+    #contactModal .modal-content {
+      background-color: #fff;
+      margin: 15% auto;
+      padding: 2em;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #contactModal .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .confetti {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+      overflow: hidden;
+    }
+    .confetti span {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+      animation: fall 3s linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+  <script>
+    const confettiContainer = document.getElementById('confetti');
+    for (let i = 0; i < 100; i++) {
+      const confetto = document.createElement('span');
+      confetto.style.left = Math.random() * 100 + 'vw';
+      confetto.style.top = Math.random() * -100 + 'px';
+      confetto.style.background = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      confetto.style.animationDelay = Math.random() * 2 + 's';
+      confettiContainer.appendChild(confetto);
+    }
+    setTimeout(() => {
+      confettiContainer.style.display = 'none';
+    }, 4000);
+  </script>
+  <header>
+    <img src="https://chat.openai.com/mnt/data/channels4_profile.jpg" alt="Manu & Koushu Arts Logo">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="https://www.youtube.com/@manuandkoushuarts9124" target="_blank">YouTube</a>
+      <a href="https://drive.google.com/drive/folders/1YFMIY-v9w1DIv1nmaHIx7jwdhtFKdi7B" target="_blank">Templates</a>
+      <a onclick="document.getElementById('contactModal').style.display='block'">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Manu & Koushu Arts</h1>
+    <p>Crafting creativity one fold at a time. Discover origami, school projects, gifts and more!</p>
+    <a href="https://www.youtube.com/@manuandkoushuarts9124" class="button" target="_blank">Subscribe Now</a>
+  </section>
+
+  <section class="featured-video">
+    <h2>🎥 Featured Video</h2>
+    <iframe src="https://www.youtube.com/embed/IxSRdrX9344" frameborder="0" allowfullscreen></iframe>
+  </section>
+
+  <section class="gallery" id="gallery">
+    <h2>🎨 Gallery</h2>
+    <div class="thumbnail-grid">
+      <div class="thumbnail"><img src="https://img.youtube.com/vi/V95fjqhxJsc/0.jpg" alt="Video 1"></div>
+      <div class="thumbnail"><img src="https://img.youtube.com/vi/HkCIDQRcMbQ/0.jpg" alt="Video 2"></div>
+      <div class="thumbnail"><img src="https://img.youtube.com/vi/MKsaJ0F5PyI/0.jpg" alt="Video 3"></div>
+      <div class="thumbnail"><img src="https://img.youtube.com/vi/STSJkUdeXzE/0.jpg" alt="Video 4"></div>
+      <div class="thumbnail"><img src="https://img.youtube.com/vi/-Y57whs6iRU/0.jpg" alt="Video 5"></div>
+    </div>
+  </section>
+
+  <footer>
+    © Manu & Koushu Arts. All rights reserved.
+  </footer>
+
+  <div id="contactModal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('contactModal').style.display='none'">&times;</span>
+      <h3>Contact Us</h3>
+      <p>For contact purposes or collaboration,<br>please email:<br><strong>manas4maddela@gmail.com</strong></p>
+    </div>
+  </div>
+</body>
+</html>
